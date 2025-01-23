@@ -1,5 +1,4 @@
 thisset = {"apple", "banana", "cherry"}
 
-thisset.add("orange")
-
-print(thisset)
+for x in thisset:
+  print(x)
