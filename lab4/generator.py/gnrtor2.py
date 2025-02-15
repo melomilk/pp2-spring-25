@@ -1,8 +1,8 @@
-def solution(n):
+def even(n):
     for i in range(n):
-        if i%3 + i%4 == 0:
+        if i % 2 == 0:
             yield i
 
-gen = solution(int(input()))
+gen = even(int(input()))
 for value in gen:
     print(value)
