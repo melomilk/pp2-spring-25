@@ -1,6 +1,3 @@
 import re
-pattern = re.compile('(?=[A-Z])')
-def camelToSnake(camel):
-    almCamel = pattern.sub('_', camel)
-    return almCamel.lower()
-print(camelToSnake('iLoveFood'))
+pattern1 = re.compile("^[a]{1}[b]+$")
+print(pattern1.search("cdf"))
