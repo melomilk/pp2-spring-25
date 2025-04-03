@@ -1,5 +1,6 @@
 import pygame
 from random import randrange
+import time
 
 # Game settings
 res = 800  # Window size
@@ -8,6 +9,8 @@ size = 50   # Grid size
 # Load images
 apple_img = pygame.image.load('apple.png')
 apple_img = pygame.transform.scale(apple_img, (size, size))  # Resize to fit grid
+banana_img = pygame.image.load('banana.png')
+banana_img = pygame.transform.scale(banana_img, (size, size))  # Resize to fit grid
 snake_img = pygame.image.load('snake.png')
 snake_img = pygame.transform.scale(snake_img, (size, size))  # Resize to fit grid
 
@@ -23,6 +26,10 @@ x, y = randrange(0, res, size), randrange(0, res, size)
 snake = [(x, y)]
 length = 1
 apple = generate_food(snake)
+banana = generate_food(snake)
+apple_timer = pygame.time.get_ticks()
+banana_timer = pygame.time.get_ticks()
+food_lifetime = 5000  # Food disappears after 5 seconds
 
 dirs = {'W': True, 'S': True, 'A': True, 'D': True}
 dx, dy = 0, 0
@@ -46,8 +53,18 @@ while True:
     for i, j in snake:
         sc.blit(snake_img, (i, j))  # Draw snake using image
     
-    # Draw the apple image instead of a rectangle
+    # Check if food expired
+    current_time = pygame.time.get_ticks()
+    if current_time - apple_timer > food_lifetime:
+        apple = generate_food(snake)
+        apple_timer = current_time
+    if current_time - banana_timer > food_lifetime:
+        banana = generate_food(snake)
+        banana_timer = current_time
+    
+    # Draw the apple and banana images
     sc.blit(apple_img, apple)
+    sc.blit(banana_img, banana)
     
     # Display score and level
     render_score = font_score.render(f'SCORE: {score}', 1, pygame.Color('orange'))
@@ -74,13 +91,21 @@ while True:
     # Check if apple is eaten
     if snake[-1] == apple:
         apple = generate_food(snake)  # Generate new food
+        apple_timer = pygame.time.get_ticks()
         length += 1
         score += 1
-        
-        # Level up every 3 points
-        if score % 3 == 0:
-            level += 1
-            fps += 2  # Increase speed
+    
+    # Check if banana is eaten (gives more points)
+    if snake[-1] == banana:
+        banana = generate_food(snake)  # Generate new food
+        banana_timer = pygame.time.get_ticks()
+        length += 2  # Banana increases length more
+        score += 2   # Banana gives more points
+    
+    # Level up every 5 points instead of 3 for faster progression with bananas
+    if score % 5 == 0 and score > 0:
+        level += 1
+        fps += 2  # Increase speed
     
     pygame.display.flip()
     clock.tick(fps)

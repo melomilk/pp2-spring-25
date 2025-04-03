@@ -48,8 +48,19 @@ def draw_all_shapes(screen):
         elif element['shape'] == TRIANGLE:
             pygame.draw.polygon(screen, element['color'], element['vertices'])
 
+# Adds a square element to the drawing
 def add_element_rectangle(x, y, color):
     elements_to_draw.append({'shape': SQUARE, 'x': x, 'y': y, 'color': color})
+
+# Adds a circle element to the drawing
+def add_element_circle(x, y, color, radius):
+    elements_to_draw.append({
+        'shape': CIRCLE,
+        'x': x,
+        'y': y,
+        'color': color,
+        'radius': radius
+    })
 
 def add_element_circle(x, y, color, radius):
     elements_to_draw.append({
