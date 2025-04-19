@@ -10,17 +10,12 @@ pygame.font.init()
 
 # Database connection
 def create_connection():
-    try:
-        conn = psycopg2.connect(
-            database="snakedb",  
-            user="postgres", 
-            password="Aidosmaidos",  
-            host="localhost", 
-            port="5432")
-        return conn
-    except psycopg2.OperationalError as e:
-        print(f"Database connection failed: {e}")
-        return None
+    return psycopg2.connect(
+        database="snakedb", 
+        user="postgres", 
+        password="Aidosmaidos", 
+        host="localhost", 
+        port="5432")
 
 def create_tables(conn):
     cur = conn.cursor()
@@ -111,7 +106,7 @@ def create_walls(level):
     return walls
 
 class Food:
-    def init(self):
+    def __init__(self):
         self.x = 0
         self.y = 0
         self.color = RED
@@ -148,6 +143,7 @@ def show_message(surface, msg, color, size=48, y_offset=0):
     text = font.render(msg, True, color)
     text_rect = text.get_rect(center=(WIDTH//2, HEIGHT//2 + y_offset))
     surface.blit(text, text_rect)
+
 def pause_game(conn, user_id, level, score):
     save_score(conn, user_id, level, score)
     paused = True
@@ -279,16 +275,16 @@ def game_loop(conn, username):
         pygame.draw.rect(screen, food.color, (food.x, food.y, GRID, GRID))
         
         # Draw snake
-    for part in snake:
+        for part in snake:
             pygame.draw.rect(screen, GREEN, (part[0], part[1], GRID, GRID))
         
         # Draw score
-            font = pygame.font.Font(None, 24)
-            score_text = font.render(f"Score: {score} Level: {level}", True, WHITE)
-            screen.blit(score_text, (10, 10))
+        font = pygame.font.Font(None, 24)
+        score_text = font.render(f"Score: {score} Level: {level}", True, WHITE)
+        screen.blit(score_text, (10, 10))
         
-            pygame.display.flip()
-            clock.tick(speed)
+        pygame.display.flip()
+        clock.tick(speed)
     
     # Game over screen
     while game_over:
@@ -322,5 +318,5 @@ def main():
     conn.close()
     pygame.quit()
 
-    if name == "main":
-        main()
+if __name__ == "__main__":
+    main()

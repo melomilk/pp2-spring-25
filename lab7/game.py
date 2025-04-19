@@ -13,10 +13,6 @@ pivot_offset_sec = (sec_img.get_width() // 2, sec_img.get_height() // 2)
 pivot_offset_min = (min_img.get_width() // 2, min_img.get_height() // 2)
 
 while not done:
-
-
-    
-
     screen.blit(bg_image, (0, 0))
     
     for event in pygame.event.get():
