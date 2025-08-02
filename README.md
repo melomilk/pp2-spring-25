@@ -12,19 +12,19 @@
 - Classic Snake with PostgreSQL integration to save high scores.  
 - Features: Multiple levels, dynamic walls, timed power-ups.  
 - **Tech**: Python, Pygame, PostgreSQL.  
-[Code](snake.py)  
+[Code](./snake.py)  
 
 ### 2. **PhoneBook (PostgreSQL)**  
 - CLI application to manage contacts with database support.  
 - Features: CSV import, pagination, search by pattern, stored procedures.  
 - **Tech**: Python, psycopg2, PostgreSQL.  
-[Code](main.py)  
+[Code](./main.py)  
 
 ### 3. **Paint App**  
 - Simple drawing application with Pygame.  
 - Features: Color picker, brush size adjustment, save/load functionality.  
 - **Tech**: Python, Pygame.  
-[Code](paint.py)  
+[Code](./paint.py)  
 
 ---
 
