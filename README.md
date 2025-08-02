@@ -18,13 +18,13 @@
 - CLI application to manage contacts with database support.  
 - Features: CSV import, pagination, search by pattern, stored procedures.  
 - **Tech**: Python, psycopg2, PostgreSQL.  
-[Code](./main.py)  
+[Code](https://github.com/melomilk/pp2-spring-25/blob/main/lab10/main.py))  
 
 ### 3. **Paint App**  
 - Simple drawing application with Pygame.  
 - Features: Color picker, brush size adjustment, save/load functionality.  
 - **Tech**: Python, Pygame.  
-[Code](./paint.py)  
+[Code](https://github.com/melomilk/pp2-spring-25/blob/main/lab8and9/paint.py) 
 
 ---
 
