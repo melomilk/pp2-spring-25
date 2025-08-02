@@ -12,7 +12,7 @@
 - Classic Snake with PostgreSQL integration to save high scores.  
 - Features: Multiple levels, dynamic walls, timed power-ups.  
 - **Tech**: Python, Pygame, PostgreSQL.  
-[Code](https://github.com/melomilk/pp2-sptring-25/lab8and9/main/snake.py)  
+[Code](https://github.com/melomilk/pp2-spring-25/blob/main/lab8and9/config.py))  
 
 ### 2. **PhoneBook (PostgreSQL)**  
 - CLI application to manage contacts with database support.  
